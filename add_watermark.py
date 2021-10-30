@@ -37,20 +37,16 @@ def add_watermark(filename, path):
             pdf.truncate()
             print("WATERMARKED PDF GENERATED.")
 
-        # with open(rf"{path}", 'wb') as pdf:
-        #     pdf.seek(0)
-        #     output.write(pdf)
-        #     pdf.truncate()
-        #     print("WATERMARKED PDF GENERATED.")
     except OSError:
-        print("OS ERROR AAYA")
+        print("File is not accessible!")
+        time.sleep(2)
         add_watermark(filename=filename, path=path)
 
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO,
-                        format='%(asctime)s - %(message)s',
-                        datefmt='%Y-%m-%d %H:%M:%S')
+    # logging.basicConfig(level=logging.INFO,
+    #                     format='%(asctime)s - %(message)s',
+    #                     datefmt='%Y-%m-%d %H:%M:%S')
     path = sys.argv[1]
     filename, file_extension = os.path.splitext(path)
     add_watermark(filename, path)
